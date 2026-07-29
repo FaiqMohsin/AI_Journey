@@ -8,7 +8,7 @@ from langchain_cohere import ChatCohere
 from langchain_core.messages import HumanMessage, SystemMessage
 
 llm = ChatCohere(
-    cohere_api_key="cohere_uqewmYGinVgU2UhnWe0jtLLzr0gnFXtgWrpmZR810tRS9u",
+    cohere_api_key="",
     model="command-a-plus-05-2026"
 )
 
