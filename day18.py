@@ -19,7 +19,7 @@ from langchain_core.tools import tool
 # cohere_client - for direct API calls in RAG tool
 # llm - LangChain wrapper for LangGraph agent
 # command-r-plus-08-2024 required for tool calling
-API_KEY= "cohere_uqewmYGinVgU2UhnWe0jtLLzr0gnFXtgWrpmZR810tRS9u"
+API_KEY= ""
 cohere_client=cohere.ClientV2(api_key=API_KEY)
 cohere_ef=embedding_functions.CohereEmbeddingFunction(
     api_key=API_KEY, model_name = "embed-v4.0")
