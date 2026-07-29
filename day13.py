@@ -1,5 +1,3 @@
-
-
 # Day 13 - LangChain Basics
 
 from langchain_cohere import ChatCohere
