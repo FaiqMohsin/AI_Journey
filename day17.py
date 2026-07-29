@@ -6,13 +6,11 @@ import os
 from chromadb.utils import embedding_functions
 from pypdf import PdfReader
 
-# ─────────────────────────────────────────
 # SETUP
-# ─────────────────────────────────────────
-cohere_client = cohere.ClientV2(api_key="cohere_uqewmYGinVgU2UhnWe0jtLLzr0gnFXtgWrpmZR810tRS9u")
+cohere_client = cohere.ClientV2(api_key="")
 
 cohere_ef = embedding_functions.CohereEmbeddingFunction(
-    api_key="cohere_uqewmYGinVgU2UhnWe0jtLLzr0gnFXtgWrpmZR810tRS9u",
+    api_key="",
     model_name="embed-v4.0"
 )
 
@@ -28,14 +26,12 @@ collection = chroma_client.create_collection(
     embedding_function=cohere_ef
 )
 
-# ─────────────────────────────────────────
 # DOCUMENT LOADER
 # supports PDF and TXT files
 # chunks text into smaller pieces
 # chunk_size = how many characters per chunk
 # overlap = how many characters shared between chunks
 # overlap prevents losing context at chunk boundaries
-# ─────────────────────────────────────────
 def load_pdf(file_path: str) -> str:
     reader = PdfReader(file_path)
     text = ""
@@ -86,10 +82,7 @@ def index_document(file_path: str):
     )
     print(f"Indexed {len(chunks)} chunks from {os.path.basename(file_path)}\n")
 
-# ─────────────────────────────────────────
-# RAG QUERY FUNCTION
-# same as before - retrieve then generate
-# ─────────────────────────────────────────
+# RAG QUERY FUNCTION - retrieve then generate
 def rag_query(question: str, n_results: int = 3) -> str:
     if collection.count() == 0:
         return "No documents indexed yet. Please add documents first."
@@ -130,13 +123,11 @@ Answer:"""
     answer += f"\n\nSources: {', '.join(unique_sources)}"
     return answer
 
-# ─────────────────────────────────────────
 # INTERACTIVE SYSTEM
 # commands:
 # 'add <filepath>' - index a new document
 # 'quit' - exit
 # anything else - ask a question
-# ─────────────────────────────────────────
 print("RAG System - Chat with Your Documents")
 print("Commands:")
 print("  add <filepath>  - load a PDF or TXT file")
