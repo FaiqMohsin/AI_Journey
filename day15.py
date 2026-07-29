@@ -10,7 +10,7 @@ from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.tools import tool
 
 llm = ChatCohere(
-    cohere_api_key="cohere_uqewmYGinVgU2UhnWe0jtLLzr0gnFXtgWrpmZR810tRS9u",
+    cohere_api_key="",
     model="command-r-plus-08-2024"
 )
 def get_text(response):
